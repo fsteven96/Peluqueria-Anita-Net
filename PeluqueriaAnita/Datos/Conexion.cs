@@ -4,10 +4,16 @@ namespace PeluqueriaAnita.Datos
 {
     public class Conexion
     {
-        private const string Conex = "Server=tcp:servidorsteven.database.windows.net,1433;Initial Catalog=PeluqueriaAnita;Persist Security Info=False;User ID=;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private readonly string _connectionString;
+
+        public Conexion(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
         public SqlConnection GetConnection()
         {
-            return new SqlConnection(Conex);
+            return new SqlConnection(_connectionString);
         }
     }
 }
