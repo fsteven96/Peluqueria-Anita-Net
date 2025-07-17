@@ -4,16 +4,10 @@ namespace PeluqueriaAnita.Datos
 {
     public class Conexion
     {
-        private readonly string _connectionString;
-
-        public Conexion(IConfiguration configuration)
-        {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
-        }
-
+        private const string Conex = "Server=jsfl.database.windows.net,1433;Initial Catalog=PeluqueriaAnita;Persist Security Info=False;User ID=publico;Password=Soydecristo1@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public SqlConnection GetConnection()
         {
-            return new SqlConnection(_connectionString);
+            return new SqlConnection(Conex);
         }
     }
 }
